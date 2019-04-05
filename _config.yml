@@ -9,13 +9,11 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: HYJOUNG
-subtitle: "한글도 들어가려나??"
+title: "Statistical Learning"
+subtitle: STUDY - ING
 email: letsdo0103@gmail.com
 name: Hae Yong Houng
 description: >
-  "한글도 들어가려나??"
-  "English is also?"
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -187,10 +185,10 @@ social:
 # These are for automatically generating sharing metadata for FB and Twitter
 # OS Protocol is for sharing the source of your site, if you're interested. For more, see osprotocol.com
 protocols:
-    fb_image: "/assets/logo.png"
+    fb_image: "/assets/logo_yonsei.png"
     fb_image_width: 612
     fb_image_height: 605
-    fb_image_type: "image/png"
+    fb_image_type: "photo1/png"
 
     twitter_image: "/assets/logo.png"
 
