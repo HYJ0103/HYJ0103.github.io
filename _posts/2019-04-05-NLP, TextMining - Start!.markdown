@@ -3,7 +3,7 @@ layout: post
 title:  "NLP, Text mining start!"
 date:   2019-04-05
 author: HaeYong JOUNG
-categories: DataScienceLab'19-1
+categories: DSL
 tags: NLP textmining
 ---
 
@@ -58,7 +58,7 @@ NLP & Text Mining Study
 
 
 
- ![process] (https://hyj0103.github.io/assets/NLPprocess.png)
+![process] (https://hyj0103.github.io/assets/NLPprocess.png)
 
 
 
@@ -113,9 +113,43 @@ NLP & Text Mining Study
 ```{python}
 from konlpy.tag import Twitter
 Twitter.pos('돌을 던질 수 없다. KIA타이거즈 에이스 양현종이 개막 이후 부진에 빠졌다. 3경기에 등판해 14이닝을 던져 14자책점을 기록했다. 왜 그럴까?')
+
+ ('돌', 'Noun'),
+ ('을', 'Josa'),
+ ('던질', 'Verb'),
+ ('수', 'Noun'),
+ ('없다', 'Adjective'),
+ ('.', 'Punctuation'),
+ ('KIA', 'Alpha'),
+ ('타이거즈', 'Noun'),
+ ('에이스', 'Noun'),
+ ('양현종', 'Noun'),
+ ('이', 'Josa'),
+ ('개막', 'Noun'),
+ ('이후', 'Noun'),
+ ('부진', 'Noun'),
+ ('에', 'Josa'),
+ ('빠졌다', 'Verb'),
+ ('.', 'Punctuation'),
+ ('3', 'Number'),
+ ('경기', 'Noun'),
+ ('에', 'Josa'),
+ ('등', 'Noun'),
+ ('판해', 'Verb'),
+ ('14', 'Number'),
+ ('이닝', 'Noun'),
+ ('을', 'Josa'),
+ ('던져', 'Verb'),
+ ('14', 'Number'),
+ ('자책점', 'Noun'),
+ ('을', 'Josa'),
+ ('기록', 'Noun'),
+ ('했다', 'Verb'),
+ ('.', 'Punctuation'),
+ ('왜', 'Noun'),
+ ('그럴까', 'Adjective'),
+ ('?', 'Punctuation')
 ```
-
-
 
 
 ​	
