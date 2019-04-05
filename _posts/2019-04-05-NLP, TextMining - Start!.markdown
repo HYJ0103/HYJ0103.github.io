@@ -3,7 +3,7 @@ layout: post
 title:  "NLP, Text mining start!"
 date:   2019-04-05
 author: HaeYong JOUNG
-categories: Data Science Lab '19-1
+categories: DataScienceLab'19-1
 tags: NLP textmining
 ---
 
@@ -114,6 +114,7 @@ NLP & Text Mining Study
 from konlpy.tag import Twitter
 Twitter.pos('돌을 던질 수 없다. KIA타이거즈 에이스 양현종이 개막 이후 부진에 빠졌다. 3경기에 등판해 14이닝을 던져 14자책점을 기록했다. 왜 그럴까?')
 ```
+
 
 
 
