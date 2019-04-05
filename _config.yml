@@ -19,7 +19,7 @@ description: >
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://HYJ0103.github.io" # the base hostname & protocol for your site
-cover: "/assets/photo1.jpg"  
+cover: "/assets/photo1.jpg" 
 logo: "/assets/logo_yonsei.jpg" 
 
 # Build settings
@@ -190,7 +190,7 @@ protocols:
     fb_image_height: 605
     fb_image_type: "photo1/jpg"
 
-    twitter_image: "/assets/logo.png"
+    twitter_image: "/assets/logo_yonsei.jpg"
 
     os_repo: "https://github.com/bencentra/centrarium.com"
     os_rcs_type: "git"
