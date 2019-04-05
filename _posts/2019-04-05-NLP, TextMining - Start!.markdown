@@ -3,7 +3,7 @@ layout: post
 title:  "NLP, Text mining start!"
 date:   2019-04-05
 author: HaeYong JOUNG
-categories: DSL
+categories: Data Science Lab '19-1
 tags: NLP textmining
 ---
 
@@ -28,6 +28,8 @@ NLP & Text Mining Study
 
 ## Why is NLP hard?
 
+​	
+
 ​	기본적으로 인간의 언어를 데이터로 표현하고 분석하는 일은 결코 쉬운 작업이 아닙니다. 인간의 언어는 동음이의어와 같이 문맥 상 해석이 필요한 경우가 잦고,  동일한 의미 내에서도 단어들
 
 의 뉘앙스와 같은 모호한 차이점이 발생합니다. 때로는 신조어나 문법에 맞지 않는 구어적 표현으로 분석을 어렵게 하는 경우도 많습니다. 이렇게 어려운 인간의 말을 잘 분석해내기 위해 자연어 처
@@ -36,7 +38,7 @@ NLP & Text Mining Study
 
 
 
-![Text Mining] (C:/Users/letsd/Desktop/HYJ0103.github.io/assets/textmining_field.png)
+![field] (https://hyj0103.github.io/assets/textmining_field.png)
 
 
 
@@ -46,17 +48,25 @@ NLP & Text Mining Study
 
 
 
+
+
 ## Basic NLP Process
+
+​	
 
 ​	다음 그림은 **NLP 처리 과정**을 한 눈에 보기 쉽게 정리한 것인데 이를 이용하여 기본적인 NLP 프로세스를 따라가보겠습니다.
 
 
 
- ![Text Mining] (C:/Users/letsd/Desktop/HYJ0103.github.io/assets/NLPprocess.png)
+ ![process] (https://hyj0103.github.io/assets/NLPprocess.png)
+
+
 
 
 
 #### 1. Sentence Splitting
+
+​	
 
 ​	일반적으로 우리가 분석하고자 하는 Text Data를 말뭉치, **Corpus**라고 지칭합니다. 컴퓨터에게 이러한 Corpus는 분석할 수 없는 언어들의 나열일 것이므로 우리는 이를 적절히 representation
 
@@ -64,7 +74,11 @@ NLP & Text Mining Study
 
 
 
+
+
 #### 2. Tokenize
+
+​	
 
 ​	**토큰(Token)**은 의미를 가지는 문자열을 지칭합니다. 작게는 형태소에서 크게는 단어에 이르기까지 독립적인 의미를 갖는 문자열을 의미하는 것입니다. **Tokenize**단계에서는 앞 서 끊어준 문장
 
@@ -74,13 +88,19 @@ NLP & Text Mining Study
 
 
 
+
+
 #### 3. POS Tagging (Part-Of-Speech Tagging)
+
+
 
 ​	**포스태깅**은 앞서 나뉘어진 토큰들에 품사를 지정해주는 작업(Tagging)을 말합니다. 토큰들에 품사를 지정해주기 위해서는 단어간의 관계나 문장 내 쓰임새에 대한 분석 능력이 필요할텐데요. 
 
 다양한 머신러닝 계열 기법들이 활용되어  포스태깅 작업을 진행하고 있습니다. **Named entity recognition**은 포스태깅 작업이 확장된 개념으로 각각의 태그별로 사람의 이름이나, 지역 이름, 회사 
 
 이름과 같은 고유 명사를 분류해주는 작업을 말합니다. 
+
+
 
 
 
@@ -97,17 +117,25 @@ Twitter.pos('돌을 던질 수 없다. KIA타이거즈 에이스 양현종이 �
 
 
 
+​	
+
 ​	결과를 살펴보면 먼저 마침표, 물음표 등을 기준으로 문장이 나뉘어진 것을 볼 수 있습니다. 또한 독립적인 의미를 갖는 형태소별로 각 문장이 잘 나뉘는 것을 볼 수 있으며, 영어나 특수문자도 
 
 잘 구별되는 것을 알 수 있다. 마지막으로 각 단어들에 품사들이 잘 주어져 있어 포스태깅 작업도 이상없이 진행되었음을 알 수 있습니다.
 
 
 
+
+
 #### 4. Syntactic, Semantic Analysis
+
+
 
 ​	일반적인 데이터 분석 과정에서 데이터 전처리가 끝나면 알고리즘을 적용하듯이, 자연어 처리에서도 데이터 전처리 후 Corpus에서 여러 의미를 도출하기 위해 알고리즘을 적용합니다. 
 
 Corpus 내의 문장, 단어의 관계나 의미를 파악하는 데 있어 크게 두 가지 관점으로 나누어 볼 수 있습니다. 
+
+
 
 
 
@@ -119,11 +147,15 @@ Corpus 내의 문장, 단어의 관계나 의미를 파악하는 데 있어 크�
 
 
 
+
+
 ​	두 번째는 **의미론적(Semantic)** 분석 방법입니다. 앞 서 통사론적 분석 방법이 문법이나 품사와 같은 문장의 전반적인 구조에 대해서 살펴보았다면, 의미론적 분석 방법은 특정 단어, 구, 문장 등
 
 이 가지는 **의미**에 방점을 두고 분석하는 방법입니다.  CNN, RNN과 같은 Deep Learning 기법을 통해 단어의 의미를 학습하게 되며, 이를 기반으로 더 큰 단위인 구, 문장 등으로 확장해가며 Corpus
 
 내의 Semantic 정보들을 분석하게 됩니다. 
+
+
 
 
 
@@ -140,13 +172,3 @@ Corpus 내의 문장, 단어의 관계나 의미를 파악하는 데 있어 크�
 ​	지금까지 **NLP 분석 과정**에 대해 간략하게 살펴보았습니다. 다음 포스트 부터는 본격적으로 **Text Mining 알고리즘**들에 대해 하나씩 공부해 보겠습니다.
 
 ​	
-
-
-
-
-
-
-
-```
-- - - 
-```
