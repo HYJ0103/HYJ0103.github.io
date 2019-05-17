@@ -40,7 +40,7 @@ GloVe는 Word embedding 방법 중 Distributed representation에 해당하는 �
 
 ​	위의 단점들을 해결하는 방법으로 GloVe 연구팀이 제시한 것이 바로 **"동시등장확률(Probability of Co-occurrence)"**입니다. 먼저 논문 속 예시를 보며 살펴보겠습니다. 
 
-![PR](https://hyj0103.github.io/assets/Glove.jpg){: width="500" height="500"}
+![PR](https://hyj0103.github.io/assets/Glove.jpg)
 
 ​	위의 표 중 첫 번째와 두 번째 row는 각각 ice과 steam이라는 단어가 주어졌을 때, k 단어가 나타날 확률을 나타냅니다. 예시에서는 k로 solid, gas, water, fashion이 주어져 있습니다. 마지막 세 번째 row에는 1, 2 row의 비로 표현됩니다. 각각의 값을 살펴보면 solid는 ice가 조건부 확률로 주어졌을 경우가 steam의 경우보다 더 등장확률이 높은 것을 알 수 있습니다. gas의 경우 solid와 반대로 나타나게 됩니다. 또한 ice, steam모두 관련이 있는 water / 모두 관련이 없는 fashion의 등장확률은 1, 2 행의 값이 비슷하게 나타나게 됩니다. 
 
@@ -56,31 +56,31 @@ GloVe는 Word embedding 방법 중 Distributed representation에 해당하는 �
 
 ​	그렇다면 동시등장확률을 활용하여 텍스트를 학습하는 **목적함수(Objective function)**를 알아보겠습니다. 동시등장확률을 이용한 목적함수를 수식으로 표현해보면 아래와 같습니다. (기본적인 notation은 위의 예시에서와 동일하게 사용)
 
-![ojf1](https://hyj0103.github.io/assets/glove2.jpg){: width="500" height="500"}
+![ojf1](https://hyj0103.github.io/assets/glove2.jpg)
 
 ​	위 수식을 살펴보면, 어떠한 단어 벡터 K가 주어졌을 때 i, j 와의 관계에 대한 비를 구하는 함수 F를 의미합니다. 여기서 함수 F가 바로 우리가 구하고자 하는 목적함수가 될 것입니다. 위 수식을 차근차근 재표현해보도록 하겠습니다.
 
 
 
-![ojf2](https://hyj0103.github.io/assets/glove3.jpg){: width="500" height="500"}
+![ojf2](https://hyj0103.github.io/assets/glove3.jpg)
 
 ​	첫 번째 수식부터 살펴보도록 하겠습니다. 먼저 우리가 관심있는 i와 j 단어 벡터의 관계를 linear space에서 가장 쉽게 표현할 수 있는 방법인 차를 이용하여 함수를 구성합니다. 그 다음으로 scalar인 확률 값을 계산해주기 위하여 두 벡터를 내적한 값으로 표현하였습니다. 이 때, 두 번째 수식에서 우변에 나타난 확률 값의 비를 우리가 구하고자 하는 목적함수로 표현해주면 보다 손쉽게 단어 간의 관계를 파악할 수 있겠다는 아이디어로 i, j와 k를 내적한 값을 목적함 수에 넣어주는 형태로 표현을 하게 됩니다. 
 
 ​	최종 수식을 만족하는 목적함수를 구하려면, 다음의 조건을 만족해야 합니다. 먼저 첫 째로, corpus상에서 i 단어 벡터는 언제든지 k 단어 벡터로 변환될 수 있어야 합니다. 또한 co-occurrence matrix가 symmetric하다는 것을 반영할 수 있어야 하며,  마지막 수식에서 나타난 것과 같이 함수 내 값의 차가 함수의 비로 표현되는 homomorphism 조건을 만족해야 합니다. 우리는 이 조건을 모두 만족하는 함수가 **지수함수**임을 알고 있습니다. 따라서 지수함수를 이용하여 위 식을 표현해보겠습니다.
 
-![obj3](https://hyj0103.github.io/assets/glove4.jpg){: width="500" height="500"}
+![obj3](https://hyj0103.github.io/assets/glove4.jpg)
 
 ​	
 
 ​	이 때, 두 번째 수식의 우변의 경우 위에서 언급한 것처럼 언제든 k와 i가 바뀔 수 있기 때문에 k와 i가 교체되더라도 바뀌지 않도록 수식을 로그가 아닌 **상수 b**로 재 표현해줍니다. 
 
-   																	 ![ojf4](https://hyj0103.github.io/assets/glove5.jpg){: width="500" height="500"}
+   																	 ![ojf4](https://hyj0103.github.io/assets/glove5.jpg)
 
 
 
 ​	따라서 최종 수식에서 우변을 좌변으로 이항시키면 우리는 원하던 목적함수를 얻을 수 있습니다. 여기에 GloVe 연구팀은 조건식을 하나 더 추가해줍니다. 바로 대량으로 등장하는 단어들에 cap을 걸어주기 위함인데요. 만약 주어진 corpus 내에  굉장히 잦은 빈도로 출현하는 단어의 경우 우리의 목적 함수에서 noise가 될 수 있습니다. (제곱 term으로 빈도수가 높다면 목적함수의 값이 커질 것이므로) 따라서 단어의 빈도수가 아무리 많더라도 1에 cap을 걸어줌으로써 해당 단어에 대한 Overfitting을 방지하는 역할을 하는 **f(X) term**을 추가해서 곱해주게 됩니다. 
 
-![final](https://hyj0103.github.io/assets/glove6.jpg){: width="500" height="500"}
+![final](https://hyj0103.github.io/assets/glove6.jpg)
 
 ​		*※ f(X) term의 알파의 경우 hyper parameter입니다. 논문에 따르면 simulation 결과, 알파가 3/4 일 때 가장 최상의 결과를 낸다고 주어져 있습니다.*
 
